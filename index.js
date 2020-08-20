@@ -19,7 +19,6 @@ Airplane.prototype.land = function () {
   this.isFlying = false;
 };
 
-
 /*
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -39,9 +38,50 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+console.log('----------Task-1----------');
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
+
+// Create an eat method
+// -We should be able to pass in an arguement of something edible.
+//    --That edible thing should be pushed to the stomach array.
+// -If the stomach has 10-items, the person can't eat anymore.
+Person.prototype.eat = function (edible) {
+  if (this.stomach.length < 10) this.stomach.push(edible);
+};
+
+// Make the person poop
+Person.prototype.poop = function () {
+  this.stomach = [];
+};
+
+// to string
+Person.prototype.toString = function () {
+  return `${this.name}, ${this.age}`;
+};
+
+console.log('Create 3 people:');
+const person_1 = new Person("steve", 53);
+const person_2 = new Person("allen", 32);
+const person_3 = new Person("jessica", 36);
+console.log(person_1);
+console.log(person_2);
+console.log(person_3);
+
+console.log('Person 3 eats:');
+person_3.eat("tacos");
+person_3.eat("pizza");
+person_3.eat("ramen");
+console.log(person_3);
+
+console.log('Person 3 poops:');
+person_3.poop();
+console.log(person_3);
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
 
 /*
   TASK 2
@@ -57,9 +97,31 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+console.log('----------Task-2----------');
 
+function Car(model, mpg) {
+  this.model = model;
+  this.milesPerGallon = mpg;
+  this.tank = 0;
+  this.odometer = 0;
 }
+Car.prototype.fill = function (gallons) {
+  this.tank += gallons;
+};
+Car.prototype.drive = function (miles) {
+  if (this.tank <= 0) {
+    console.log(`I ran out of fuel at ${this.odometer} miles!`);
+  } else {
+    this.odometer += miles;
+
+    // ( miles / gallon )^-1  =  1/mpg  =  (gallon/ mile)
+    // miles * ( gallon / mile ) = gallons
+    this.tank -= miles * (1 / this.milesPerGallon);
+  }
+};
+
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
 
 /*
   TASK 3
@@ -68,9 +130,38 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
 
+console.log('----------Task-3----------');
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
+function Baby(attr) {
+  // Inherit properties
+  Person.call(this, attr.name, attr.age);
+
+  this.favoriteToy = attr.favoriteToy;
+}
+
+// Inherit methods
+Baby.prototype = Object.create(Person.prototype);
+
+// Add new method on Baby
+Baby.prototype.play = function () {
+  console.log(
+    `Name: ${this.name},  Age: ${this.age},  Stomach: ${this.stomach},  Toy: ${this.favoriteToy}`
+  );
+};
+
+// Create new Baby object
+const baby = new Baby({ name: "alison", age: 2, favoriteToy: "ball" });
+baby.play();
+
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
+
 
 /* 
   TASK 4
@@ -82,14 +173,24 @@ function Baby() {
   4. 
 */
 
+console.log('~~~~~~~~~~~~~~~~~~~~');
+console.log('~~~~~~~~~~~~~~~~~~~~');
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
-if (typeof exports !== 'undefined') {
-  module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Baby) { module.exports.Baby = Baby }
+if (typeof exports !== "undefined") {
+  module.exports = module.exports || {};
+  if (Airplane) {
+    module.exports.Airplane = Airplane;
+  }
+  if (Person) {
+    module.exports.Person = Person;
+  }
+  if (Car) {
+    module.exports.Car = Car;
+  }
+  if (Baby) {
+    module.exports.Baby = Baby;
+  }
 }
