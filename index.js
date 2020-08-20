@@ -227,7 +227,10 @@ console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
         - 3. Returns the new object (return this;)
 
   o	window binding
-    	When this 
+    	If you invoke a function and it doesn't have anything to the left of the dot, not using the new-binding, 
+      and .call, .apply, or .bind are not applied, then this-keyword defaults to referring to the global object.
+    	The default object is the global object.  In the browser this is the window object.
+
 
 
 */

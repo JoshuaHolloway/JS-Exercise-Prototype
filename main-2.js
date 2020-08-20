@@ -1,3 +1,5 @@
+// Here are my running notes on prototype
+
 function Parent(attr) {
     this.name = attr.name;
     this.loc = attr.loc;

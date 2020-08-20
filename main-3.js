@@ -1,3 +1,5 @@
+// This is the same as main.2.js but with class syntax :)
+
 class Parent {
     constructor(attr) {
         this.name = attr.name;

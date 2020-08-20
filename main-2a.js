@@ -1,3 +1,5 @@
+// These are the Britt's notes from her codepen from Wednesday's lecture [copy and pasted from codepen]
+
 function Pet(attributes){
   this.name = attributes.name;
   this.species = attributes.species;
