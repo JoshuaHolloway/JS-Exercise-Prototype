@@ -66,7 +66,7 @@ Person.prototype.toString = function () {
 console.log('Create 3 people:');
 const person_1 = new Person("steve", 53);
 const person_2 = new Person("allen", 32);
-const person_3 = new Person("jessica", 36);
+const person_3 = new Person("jessica", 43);
 console.log(person_1);
 console.log(person_2);
 console.log(person_3);
@@ -105,21 +105,44 @@ function Car(model, mpg) {
   this.tank = 0;
   this.odometer = 0;
 }
+
 Car.prototype.fill = function (gallons) {
   this.tank += gallons;
 };
+
+// Stretch 2.1:
 Car.prototype.drive = function (miles) {
+  
+  // Stetch 2.2: -Requirement 1: 
+  //  -A car which runs out of `fuel` while driving can't drive any more distance.
+  //  -The `drive` method should return a string "I ran out of fuel at x miles!".
   if (this.tank <= 0) {
     console.log(`I ran out of fuel at ${this.odometer} miles!`);
   } else {
+
+    // Stretch 2.1 - Requirement 1: The distance driven causes the `odometer` to go up:
     this.odometer += miles;
 
-    // ( miles / gallon )^-1  =  1/mpg  =  (gallon/ mile)
+    // Stretch 2.1 - Requirement 2:
+    // -The distance driven causes the the `tank` to go down taking `milesPerGallon` into account.
+    //
+    // (gallon / mile)  =  (1 / milesPerGallon)
     // miles * ( gallon / mile ) = gallons
-    this.tank -= miles * (1 / this.milesPerGallon);
+    const gallons_per_mile = (1 / this.milesPerGallon);
+    const gallons_used = miles * gallons_per_mile;
+    this.tank -= gallons_used;
+
+    console.log(`After driving (another) ${miles}-miles the odometer is at: ${this.odometer} and the gas-level is at: ${this.tank}!`);
+
   }
 };
 
+// Test car
+const car = new Car('chevy', 10); // Create chevy car with 10-mpg
+car.fill(2);  // -fill with 2 gallons
+car.drive(10); // -drive 10 miles
+car.drive(10); // -drive 10 more miles (at the end of this 10 miles we should be out of gas)
+car.drive(10); // -attempt to drive 10 more miles. Shold be out of gas though!!!
 console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
 console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
 
