@@ -1,10 +1,10 @@
 import functions from '../index';
 
-// describe('fooFunction', ()=>{
-//     it('foo returns foo', ()=>{
-//         expect(functions.foo()).toBe('bar');
-//     })
-// });
+describe('fooFunction', ()=>{
+    it('foo returns foo', ()=>{
+        expect(functions.foo()).toBe('bar');
+    })
+});
 
 describe('Instances of Person', () => {
     let neo
@@ -77,30 +77,30 @@ describe('Instances of Car', () => {
   })
 })
 
-// describe('Instances of Baby', () => {
-//   let baby
-//   beforeEach(() => {
-//     baby = new functions.Baby('Lucy', 5, 'trains')
-//   })
-//   it('initialize with the given name', () => {
-//     expect(baby.name).toBe('Lucy')
-//   })
-//   it('initialize with the given age', () => {
-//     expect(baby.age).toEqual(5)
-//   })
-//   it('initialize with the given favorite toy', () => {
-//     expect(baby.favoriteToy).toBe('trains')
-//   })
-//   it('get a play method from their prototype', () => {
-//     expect(baby.__proto__.play).not.toBeUndefined();
-//   })
-//   it('can play with favorite toy', () => {
-//     expect(baby.play()).toContain('trains')
-//   })
-//   it('inherit the methods on Person.prototype', () => {
-//     expect(baby.__proto__.eat).not.toBeUndefined();
-//   })
-//   it('inherit the methods on Person.prototype', () => {
-//       expect(baby.__proto__.poop).not.toBeUndefined();
-//     })
-// })
+describe('Instances of Baby', () => {
+  let baby
+  beforeEach(() => {
+    baby = new functions.Baby('Lucy', 5, 'trains')
+  })
+  it('initialize with the given name', () => {
+    expect(baby.name).toBe('Lucy')
+  })
+  it('initialize with the given age', () => {
+    expect(baby.age).toEqual(5)
+  })
+  it('initialize with the given favorite toy', () => {
+    expect(baby.favoriteToy).toBe('trains')
+  })
+  it('get a play method from their prototype', () => {
+    expect(baby.__proto__.play).not.toBeUndefined();
+  })
+  it('can play with favorite toy', () => {
+    expect(baby.play()).toContain('trains')
+  })
+  it('inherit the methods on Person.prototype', () => {
+    expect(baby.__proto__.eat).not.toBeUndefined();
+  })
+  it('inherit the methods on Person.prototype', () => {
+      expect(baby.__proto__.poop).not.toBeUndefined();
+    })
+})

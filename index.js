@@ -119,11 +119,25 @@ Car.prototype.drive = function (miles) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+  function Baby(name, age, toy) {
+    // Inherit properties
+    Person.call(this, name, age);
+
+    this.favoriteToy = toy;
   }
- 
-  
+
+  // Inherit methods
+  Baby.prototype = Object.create(Person.prototype);
+
+  // Add new method on Baby
+  Baby.prototype.play = function () {
+    return `Playing with ${this.favoriteToy}`;
+  };
+
+  // Create new Baby object
+  const baby = new Baby({ name: "alison", age: 2, favoriteToy: "ball" });
+  baby.play();
+
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
@@ -142,8 +156,8 @@ function foo(){
 }
 
 export default{
-    // foo,
+    foo,
     Person, 
     Car,
-    // Baby
+    Baby
 }
