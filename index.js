@@ -141,10 +141,48 @@ Car.prototype.drive = function (miles) {
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+      -The "this"-keyword allows us to re-use functions in different contexts.
+      -Answers the question: "Where is this function invoked?"
+        -Does NOT answer the question: "Where was this function defined?"
+      -We don't know that the "this"-keyword is until the function is invoked.
+
+      o	Implicit Binding
+        •	this refers to the object that called the method.
+        •	Look to the left of the dot.
+
+
+      o	Explicit Binding
+        •	Used to bind a function to the context of a specific object.
+        •	We explicity state which object the "this"-keyword refers to.
+        •	Three ways of performing explicity binding:
+          •	.bind
+            	Returns a function to be invoked later:
+            	Syntax:
+              -	function = function.bind(object);  
+          •	.call
+            	Immediately invoke function
+              -	Takes an argument list as individual arguments
+            	Syntax:
+              -	function.call(object, arg1,...,argN);
+          •	.apply 
+            	Same as .call but instead of a parameter list as individual parameters it uses an array.
+            	Immediately invoke function
+              o	Takes an array as argument
+            	Syntax:
+              -	function.apply(object, [arg1,...,argN]);
+      o	new binding
+        	The new keyword is used to generate a new object from a constructor function.
+          •	When a constructor function is invoked with the new keyword it:
+            - 1. Creates a new object (this = {};)
+            - 2. Adds the properties onto it
+            - 3. Returns the new object (return this;)
+
+      o	window binding
+        	If you invoke a function and it doesn't have anything to the left of the dot, not using the new-binding, 
+          and .call, .apply, or .bind are not applied, then this-keyword defaults to referring to the global object.
+        	The default object is the global object.  In the browser this is the window object.
+
+
   */
   
   
