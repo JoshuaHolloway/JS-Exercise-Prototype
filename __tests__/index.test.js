@@ -49,33 +49,33 @@ describe('Instances of Person', () => {
 })
 
 //car
-// describe('Instances of Car', () => {
-//   let batmobile
-//   beforeEach(() => {
-//     batmobile = new functions.Car('BatMobile', 20)
-//   })
-//   it('initialize with the given model', () => {
-//     expect(batmobile.model).toBe('BatMobile')
-//   })
-//   it('initialize with the given milesPerGallon', () => {
-//     expect(batmobile.milesPerGallon).toEqual(20)
-//   })
-//   it('initialize with an empty tank', () => {
-//     expect(batmobile.tank).toEqual(0)
-//   })
-//   it('initialize with an odometer at 0 miles', () => {
-//     expect(batmobile.odometer).toEqual(0)
-//   })
-//   it('get fill methods from their prototype', () => {
-//     expect(batmobile.__proto__.fill).not.toBeUndefined();
-//   })
-//   it('fill method increases the tank by the given gallons', () => {
-//     batmobile.fill(10)
-//     expect(batmobile.tank).toEqual(10)
-//     batmobile.fill(10)
-//     expect(batmobile.tank).toEqual(20)
-//   })
-// })
+describe('Instances of Car', () => {
+  let batmobile
+  beforeEach(() => {
+    batmobile = new functions.Car('BatMobile', 20)
+  })
+  it('initialize with the given model', () => {
+    expect(batmobile.model).toBe('BatMobile')
+  })
+  it('initialize with the given milesPerGallon', () => {
+    expect(batmobile.milesPerGallon).toEqual(20)
+  })
+  it('initialize with an empty tank', () => {
+    expect(batmobile.tank).toEqual(0)
+  })
+  it('initialize with an odometer at 0 miles', () => {
+    expect(batmobile.odometer).toEqual(0)
+  })
+  it('get fill methods from their prototype', () => {
+    expect(batmobile.__proto__.fill).not.toBeUndefined();
+  })
+  it('fill method increases the tank by the given gallons', () => {
+    batmobile.fill(10)
+    expect(batmobile.tank).toEqual(10)
+    batmobile.fill(10)
+    expect(batmobile.tank).toEqual(20)
+  })
+})
 
 // describe('Instances of Baby', () => {
 //   let baby
